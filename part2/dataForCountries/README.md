@@ -1,8 +1,9 @@
-# React + Vite
+omg this was so not hard (LOL KILL ME)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+the main thing that was hard was using the useEffect hook 
+especially because somewhere down the line i had to use api that needed credit card info im an african whats a credit card lmao
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ill try styling it over the next few days but this was also fun
+maybe add features too idk 
+thank you for this 

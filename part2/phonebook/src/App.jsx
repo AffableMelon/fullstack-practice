@@ -16,7 +16,8 @@ const App = () => {
     
   ]);
   const [newName, setNewName] = useState("");
-  const url = "http://localhost:3002/persons";
+  // const url = "http://localhost:3002/persons";
+  const url = "http://localhost:8001/api/persons"
 
   useEffect(() => {
     serverSide.get(url).then((p) => {
@@ -29,7 +30,7 @@ const App = () => {
       
       serverSide.remove(url, id).then((p) => {
         console.log(p);
-        setPersons(p);
+        setPersons(persons.filter(person => person.id !== id));
       });
     }
   };
@@ -87,8 +88,14 @@ const App = () => {
       ? handleChangePerson(newName, phone)
       : serverSide
           .post(url, addName)
-          .then((p) => setPersons(persons.concat(p)));
-
+          .then((p) => setPersons(persons.concat(p)))
+          .catch(error => {
+          setMessage(error.response.data.error)
+          setDivClass('error')
+          setTimeout(() => {
+            setMessage(null); setDivClass(null)
+          }, 5000)
+          });
    
   };
 

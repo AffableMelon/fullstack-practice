@@ -6,6 +6,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const blogRouter = require("./controllers/blogs");
 const middleweare  = require('./utils/middleware')
+const userRouter = require('./controllers/users');
+const loginRouter = require("./utils/login");
 
 // const blogSchema = new mongoose.Schema({
 //   title: String,
@@ -30,12 +32,26 @@ mongoose
 
 app.use(cors());
 app.use(express.json());
+
+
 app.use(middleweare.requestLogger)
+
+app.use(middleweare.getTokenFrom)
+
+
+
+// app.use(middleweare.unknownEndpoint)
 app.get('/', (req, rep) => {
   rep.send('<h1> Hello World </h1>')
 })
-app.use('/api/blogs', blogRouter)
 
+
+
+//routers
+
+app.use('/api/blogs', middleweare.identifyUser, blogRouter)
+app.use('/api/users', userRouter)
+app.use('/api/login', loginRouter)
 
 
 

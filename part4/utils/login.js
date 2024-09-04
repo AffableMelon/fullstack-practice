@@ -17,7 +17,7 @@ loginRouter.post('/', async (req, rep) => {
         console.log(user)
         console.log(password)
         console.log(correctPass)
-        return rep.status(401).json({
+        return rep.status(400).json({
             error: 'username or password incorrect'
         })
     }

@@ -15,7 +15,10 @@ blogRouter.get("/", async (request, response) => {
   });
   
 blogRouter.post("/", async (request, response) => {
+
+  // console.log(request)
     // const getTokenFrom = request => {
+
     //   const auth = request.get('authorization')
     //   return((auth && auth.startsWith('Bearer ')) ? auth.replace('Bearer ', '') : null)
     // }
@@ -27,7 +30,7 @@ blogRouter.post("/", async (request, response) => {
       //     error: 'inivalid token'
       //   })
       // }
-
+      // console.log(request)
       // const user = await User.findById(tokenDecoded.id)
       const user = request.user
       const blog = new Blog({
@@ -44,6 +47,7 @@ blogRouter.post("/", async (request, response) => {
       console.log(savedBlog)
       response.status(201).json(savedBlog)
     }catch(error) {
+      // console.log(request)
       console.log(error.message)
       errorHandler(error,request,response,null)
     }
@@ -93,21 +97,26 @@ blogRouter.get('/:id', async (req, rep) => {
 blogRouter.put('/:id', async (req, rep) => {
   try{
     const user = req.user
+    // console.log(user)
     const id = req.params.id
+    // console.log(id)
     newBlog = {
       title: req.body.title,
       url: req.body.url,
       author: req.body.author,
       likes: req.body.likes
     }
-    const blog = Blog.findById(id)
-    if(user.id.toString() !== blog.user.toString()){
-      return rep.status(401).json({
-        error: 'user doesnt own this post'
-      })
-    }
+    const blog = await Blog.findById(id)
+    // console.log(blog.json)
+    console.log(user.id)
+    // if(user.id.toString() !== blog.user.toString()){
+    //   return rep.status(408).json({
+    //     error: 'user doesnt own this post'
+    //   })
+    // }
     updatedBlog = await Blog.findByIdAndUpdate(id, newBlog, {new: true})
     rep.json(updatedBlog)
+    console.log(updatedBlog)
 
   }catch(err){
     errorHandler(err, req, rep, (e) => {

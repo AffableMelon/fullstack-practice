@@ -49,11 +49,18 @@ app.get('/', (req, rep) => {
 
 //routers
 
+
 app.use('/api/blogs', middleweare.identifyUser, blogRouter)
 app.use('/api/users', userRouter)
 app.use('/api/login', loginRouter)
 
+if (process.env.NODE_ENV === 'test'){
+  const testingRouter = require('./controllers/testing')
+  app.use( '/api/testing',testingRouter)
+}
 
+app.use(middleweare.unknownEndpoint)
+app.use(middleweare.errorHandler)
 
 module.exports = app
 

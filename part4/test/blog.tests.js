@@ -113,20 +113,20 @@ test.only('get a specific value from the db', async () => {
 })
 
 describe('POST tests', () => {
-  // let header
-  // beforeEach(async () => {
-  //   await User.deleteMany({})
-  //   await Blog.deleteMany({})
+  let header
+  beforeEach(async () => {
+    await User.deleteMany({})
+    await Blog.deleteMany({})
 
-  //   const newUser = {
-  //     name: 'root',
-  //     username: 'rootTest',
-  //     password: 'password'
-  //   }
-  //   await api.post('/api/users').send(newUser)
-  //   const tokenized = await api.post('/api/login').send(newUser)
-  //   header = {'Authorization': `Bearer ${tokenized.body.token}`}
-  // })
+    const newUser = {
+      name: 'root',
+      username: 'rootTest',
+      password: 'password'
+    }
+    await api.post('/api/users').send(newUser)
+    const tokenized = await api.post('/api/login').send(newUser)
+    header = {'Authorization': `Bearer ${tokenized.body.token}`}
+  })
     test('post a blog', async () => {
             const newBlog = {
             title: "TDD harms architecture",

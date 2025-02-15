@@ -1,8 +1,7 @@
-# React + Vite
+# Rate the cafe!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple react app to learn about flux and state managment with flux. Styled with tailwind.
 
-Currently, two official plugins are available:
+## Demo of the App
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![demo gif](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDEzeWVvY3JmMTQzMXY4YTM0a3h5b2JrNWVjdnR1NWUyc2I2aTdwcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2FKwPRA4R5PpM5Xmx6/giphy.gif)
